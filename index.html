@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maravillium — We build things with AI</title>
+  <meta name="description" content="Maravillium builds AI integrations, websites, and automations. One-person studio, infinite ambition.">
+  <meta property="og:title" content="Maravillium — We build things with AI">
+  <meta property="og:description" content="AI integrations, web development, and automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maravillium.com">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+</head>
+<body>
+
+  <!-- BACKGROUND GLOWS -->
+  <div class="bg-glows">
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+    <div class="bg-glow bg-glow--3"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="navbar__logo">Maravillium</a>
+    <div class="navbar__links">
+      <a href="#services" class="navbar__link" data-i18n="nav_services">Services</a>
+      <a href="#tools" class="navbar__link" data-i18n="nav_tools">Tools</a>
+      <a href="#about" class="navbar__link" data-i18n="nav_about">About</a>
+      <a href="#contact" class="navbar__link" data-i18n="nav_contact">Contact</a>
+      <div class="navbar__actions">
+        <button class="navbar__lang" id="lang-toggle" aria-label="Toggle language">ES</button>
+        <button class="navbar__theme" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+        </button>
+      </div>
+    </div>
+    <button class="navbar__menu-btn" id="menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="navbar__mobile" id="mobile-menu">
+    <button class="navbar__mobile-close" id="mobile-close" aria-label="Close">&#10005;</button>
+    <a href="#services" data-i18n="nav_services">Services</a>
+    <a href="#tools" data-i18n="nav_tools">Tools</a>
+    <a href="#about" data-i18n="nav_about">About</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <div class="navbar__mobile-actions">
+      <button class="navbar__lang" id="lang-toggle-mobile">ES</button>
+      <button class="navbar__theme" id="theme-toggle-mobile" aria-label="Toggle theme">
+        <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+        <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="22" height="22" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__content">
+      <div class="hero__badge reveal">
+        <span class="hero__badge-dot"></span>
+        <span data-i18n="hero_badge">Available for projects</span>
+      </div>
+      <h1 class="hero__title reveal reveal-delay-1">
+        <span data-i18n="hero_title_1">We build things</span><br>
+        <span data-i18n="hero_title_2">with AI.</span>
+      </h1>
+      <p class="hero__description reveal reveal-delay-2" data-i18n="hero_desc">Maravillium is a one-person studio that designs websites, builds AI integrations, and automates the boring stuff.</p>
+      <a href="#services" class="hero__cta reveal reveal-delay-3" id="hero-cta">
+        <span data-i18n="hero_cta">Our services</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+      </a>
+    </div>
+    <div class="hero__scroll-hint" data-i18n="hero_scroll">Scroll</div>
+  </section>
+
+
+
+  <!-- SERVICES -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="services__header">
+        <p class="section-label reveal" data-i18n="services_label">Services</p>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n="services_title">What we do.</h2>
+        <p class="section-subtitle reveal reveal-delay-2" data-i18n="services_subtitle">Three pillars — one goal: make technology work for you.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg></div>
+          <h3 class="service-card__title" data-i18n="svc1_title">AI & Automation</h3>
+          <p class="service-card__desc" data-i18n="svc1_desc">Custom AI tools, workflow automation, and integrations that save hours of repetitive work.</p>
+          <div class="service-card__tags" data-i18n-tags="svc1_tags"></div>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"/></svg></div>
+          <h3 class="service-card__title" data-i18n="svc2_title">Web Development</h3>
+          <p class="service-card__desc" data-i18n="svc2_desc">Websites and web apps that look incredible and load fast. No bloat, no templates.</p>
+          <div class="service-card__tags" data-i18n-tags="svc2_tags"></div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-card__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg></div>
+          <h3 class="service-card__title" data-i18n="svc3_title">Strategy & Growth</h3>
+          <p class="service-card__desc" data-i18n="svc3_desc">Digital presence, analytics, and marketing strategies that actually move the needle.</p>
+          <div class="service-card__tags" data-i18n-tags="svc3_tags"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="tools section" id="tools">
+    <div class="container">
+      <div class="tools__header">
+        <p class="section-label reveal" data-i18n="tools_label">Tools</p>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n="tools_title">Mini web apps & tools.</h2>
+        <p class="section-subtitle reveal reveal-delay-2" data-i18n="tools_subtitle">Small utilities we built for fun, some are free, others require a subscription.</p>
+      </div>
+      
+      <div class="tools__grid">
+        <!-- Tool 0: Pomodoro Focus (Free) -->
+        <div class="tool-card tool-card--free reveal" data-tool="pomodoro">
+          <div class="tool-card__spotlight"></div>
+          <div class="tool-card__badge tool-card__badge--free" data-i18n="tool_badge_free">FREE</div>
+          <div class="tool-card__content">
+            <div class="tool-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+            </div>
+            <h3 class="tool-card__title" data-i18n="tool_pomodoro_title">Pomodoro Focus</h3>
+            <p class="tool-card__desc" data-i18n="tool_pomodoro_desc">A premium Bento-style pomodoro timer with integrated tasks and ambient sounds to boost focus.</p>
+            <span class="tool-card__action" data-i18n="tool_action_open">Open Tool →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="tech section" id="tech">
+    <div class="container">
+      <div class="tech__header">
+        <p class="section-label reveal" data-i18n="tech_label">Tech Stack</p>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n="tech_title">Our tools of choice.</h2>
+        <p class="section-subtitle reveal reveal-delay-2" data-i18n="tech_subtitle">Modern frameworks, artificial intelligence APIs, and high-performance libraries.</p>
+      </div>
+      <div class="tech__grid reveal reveal-delay-2">
+        <div class="tech__category">
+          <h3 class="tech__category-title">AI & Data</h3>
+          <div class="tech__tags">
+            <span class="tech__tag">Gemini API</span>
+            <span class="tech__tag">OpenAI / GPT-4</span>
+            <span class="tech__tag">Whisper Speech</span>
+            <span class="tech__tag">PyTorch</span>
+            <span class="tech__tag">Computer Vision</span>
+            <span class="tech__tag">LLM Agents</span>
+          </div>
+        </div>
+        <div class="tech__category">
+          <h3 class="tech__category-title">Web & Code</h3>
+          <div class="tech__tags">
+            <span class="tech__tag">JavaScript (ES6+)</span>
+            <span class="tech__tag">HTML5 / Semantic CSS</span>
+            <span class="tech__tag">React / Next.js</span>
+            <span class="tech__tag">Node.js</span>
+            <span class="tech__tag">Tailwind CSS</span>
+            <span class="tech__tag">Vite</span>
+          </div>
+        </div>
+        <div class="tech__category">
+          <h3 class="tech__category-title">Media & Ops</h3>
+          <div class="tech__tags">
+            <span class="tech__tag">FFmpeg</span>
+            <span class="tech__tag">Audio Processing</span>
+            <span class="tech__tag">Git / GitHub</span>
+            <span class="tech__tag">Docker</span>
+            <span class="tech__tag">Python Scripts</span>
+            <span class="tech__tag">Linux Server</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="section-label reveal" data-i18n="about_label">About</p>
+          <h2 class="section-title reveal reveal-delay-1" data-i18n="about_title">Who is Maravillium?</h2>
+          <p class="reveal reveal-delay-2" data-i18n="about_p1" data-i18n-html><strong>Honestly?</strong> It's mostly just me — a developer who gets bored easily and builds things to scratch that itch.</p>
+          <p class="reveal reveal-delay-3" data-i18n="about_p2" data-i18n-html>Maravillium started as an excuse to experiment with AI, build websites for fun, and automate everything that annoyed me. Some of those experiments turned into real projects for real clients.</p>
+          <p class="reveal reveal-delay-4" data-i18n="about_p3" data-i18n-html>The philosophy is simple: <strong>technology should be invisible</strong>. It should just work, look beautiful, and save you time.</p>
+        </div>
+        <div class="about__stats">
+          <div class="stat-card reveal">
+            <div class="stat-card__number" data-i18n="stat1_num">15+</div>
+            <div class="stat-card__label" data-i18n="stat1_label">Projects shipped</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-card__number" data-i18n="stat2_num">∞</div>
+            <div class="stat-card__label" data-i18n="stat2_label">Coffees consumed</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-card__number" data-i18n="stat3_num">24/7</div>
+            <div class="stat-card__label" data-i18n="stat3_label">Building stuff</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-card__number" data-i18n="stat4_num">0</div>
+            <div class="stat-card__label" data-i18n="stat4_label">Templates used</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact__content reveal">
+        <p class="section-label" data-i18n="contact_label">Contact</p>
+        <h2 class="section-title reveal-delay-1" data-i18n="contact_title">Let's build something.</h2>
+        <p class="contact__subtitle reveal-delay-2" data-i18n="contact_subtitle">Got an idea? Need AI magic? Want a website that doesn't suck? Let's talk.</p>
+        <div class="contact__buttons reveal-delay-3">
+          <a href="https://api.whatsapp.com/send/?phone=5491128684459&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="contact__btn contact__btn--primary" id="contact-wa">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-i18n="contact_wa">WhatsApp</span>
+          </a>
+          <a href="mailto:hello@maravillium.com" class="contact__btn contact__btn--secondary" id="contact-email">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+            <span data-i18n="contact_email">Email</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy" data-i18n="footer_copy">© 2026 Maravillium. Built with obsession.</span>
+        <div class="footer__links">
+          <a href="#" class="footer__link" data-i18n="footer_link1">GitHub</a>
+          <a href="#" class="footer__link" data-i18n="footer_link2">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
