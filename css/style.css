@@ -1320,7 +1320,7 @@ ul, ol {
 
 .tools__grid {
   display: grid;
-  grid-template-columns: minmax(auto, 600px);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   gap: 32px;
 }

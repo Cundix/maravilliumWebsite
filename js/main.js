@@ -19,7 +19,7 @@
       hero_badge: 'Available for projects',
       hero_title_1: 'We build things',
       hero_title_2: 'with AI.',
-      hero_desc: 'Maravillium is a one-person studio that designs websites, builds AI integrations, and automates the boring stuff.',
+      hero_desc: 'Maravillium is a small team that designs websites, builds AI integrations, and automates the boring stuff.',
       hero_cta: 'Our services',
       hero_scroll: 'Scroll',
       services_label: 'Services',
@@ -41,10 +41,12 @@
       tool_action_open: 'Open Tool →',
       tool_pomodoro_title: 'Pomodoro Focus',
       tool_pomodoro_desc: 'A premium Bento-style pomodoro timer with integrated tasks and ambient sounds to boost focus.',
+      tool_generator_title: 'Brand Image Generator',
+      tool_generator_desc: 'Generate high-quality social media posts and branding assets matching your visual identity using AI.',
       about_label: 'About',
       about_title: 'Who is Maravillium?',
-      about_p1: '<strong>Honestly?</strong> It\'s mostly just me — a developer who gets bored easily and builds things to scratch that itch.',
-      about_p2: 'Maravillium started as an excuse to experiment with AI, build websites for fun, and automate everything that annoyed me. Some of those experiments turned into real projects for real clients.',
+      about_p1: '<strong>Honestly?</strong> We are a small team of developers who get bored easily and build things to scratch that itch.',
+      about_p2: 'Maravillium started as an excuse to experiment with AI, build websites for fun, and automate everything that annoyed us. Some of those experiments turned into real projects for real clients.',
       about_p3: 'The philosophy is simple: <strong>technology should be invisible</strong>. It should just work, look beautiful, and save you time.',
       stat1_num: '15+',
       stat1_label: 'Projects shipped',
@@ -74,7 +76,7 @@
       hero_badge: 'Disponible para proyectos',
       hero_title_1: 'Construimos cosas',
       hero_title_2: 'con IA.',
-      hero_desc: 'Maravillium es un estudio de una persona que diseña sitios web, construye integraciones con IA y automatiza lo aburrido.',
+      hero_desc: 'Maravillium es un equipo pequeño que diseña sitios web, construye integraciones con IA y automatiza lo aburrido.',
       hero_cta: 'Nuestros servicios',
       hero_scroll: 'Scroll',
       services_label: 'Servicios',
@@ -96,10 +98,12 @@
       tool_action_open: 'Abrir Herramienta →',
       tool_pomodoro_title: 'Foco Pomodoro',
       tool_pomodoro_desc: 'Un temporizador pomodoro premium estilo bento con tareas integradas y sonidos ambientales.',
+      tool_generator_title: 'Generador de Imagen de Marca',
+      tool_generator_desc: 'Crea recursos cohesivos para redes sociales y gráficos de marketing que coincidan con tu identidad de marca al instante con IA.',
       about_label: 'Nosotros',
       about_title: '¿Quién es Maravillium?',
-      about_p1: '<strong>¿La verdad?</strong> Somos mayormente yo — un desarrollador que se aburre fácil y construye cosas para matar el aburrimiento.',
-      about_p2: 'Maravillium empezó como excusa para experimentar con IA, hacer sitios web por diversión y automatizar todo lo que me molestaba. Algunos de esos experimentos se convirtieron en proyectos reales para clientes reales.',
+      about_p1: '<strong>¿La verdad?</strong> Somos un equipo pequeño de desarrolladores que se aburren fácil y construyen cosas para matar el aburrimiento.',
+      about_p2: 'Maravillium empezó como excusa para experimentar con IA, hacer sitios web por diversión y automatizar todo lo que nos molestaba. Algunos de esos experimentos se convirtieron en proyectos reales para clientes reales.',
       about_p3: 'La filosofía es simple: <strong>la tecnología debería ser invisible</strong>. Debería simplemente funcionar, verse hermosa y ahorrarte tiempo.',
       stat1_num: '15+',
       stat1_label: 'Proyectos entregados',
@@ -295,8 +299,11 @@
   // --- Tool Action logic ---
   toolCards.forEach(card => {
     card.addEventListener('click', () => {
-      if (card.getAttribute('data-tool') === 'pomodoro') {
+      const tool = card.getAttribute('data-tool');
+      if (tool === 'pomodoro') {
         window.location.href = 'pomodoroTimerApp/';
+      } else if (tool === 'generator') {
+        window.open('https://generator.maravillium.com', '_blank');
       }
     });
   });
