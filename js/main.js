@@ -305,11 +305,11 @@
     card.addEventListener('click', () => {
       const tool = card.getAttribute('data-tool');
       if (tool === 'pomodoro') {
-        window.location.href = 'pomodoroTimerApp/';
+        window.location.href = 'pomodoroTimerApp/index.html';
       } else if (tool === 'generator') {
         window.open('https://generator.maravillium.com', '_blank');
       } else if (tool === 'sitemap-creator') {
-        window.location.href = 'sitemapCreatorApp/';
+        window.location.href = 'sitemapCreatorApp/index.html';
       }
     });
   });
