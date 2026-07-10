@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sitemap Creator & SEO Auditor — Maravillium</title>
+  <meta name="description" content="Generate XML sitemaps, robots.txt, and run immediate SEO tag audits for AI-generated static websites. Purely client-side and secure.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+<body>
+
+  <!-- BACKGROUND GLOWS -->
+  <div class="bg-glows">
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+    <div class="bg-glow bg-glow--3"></div>
+  </div>
+
+  <!-- CONTAINER -->
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-left">
+        <a href="../" class="back-btn" id="back-to-home">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+          <span data-i18n="back_home">Back to Maravillium</span>
+        </a>
+      </div>
+      
+      <div class="header-center">
+        <span class="logo-text" data-i18n="app_title">AI Sitemap Creator</span>
+      </div>
+
+      <div class="header-right">
+        <button class="nav-btn" id="lang-toggle" aria-label="Toggle language">ES</button>
+        <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- BENTO DASHBOARD -->
+    <main class="bento-dashboard">
+
+      <!-- PANEL 1: SOURCE PICKER (Scanner options) -->
+      <section class="bento-card source-panel" id="card-source">
+        <div class="bento-card__spotlight"></div>
+        <div class="bento-card__content">
+          <div class="card-header">
+            <h2 data-i18n="source_header">1. Import Website</h2>
+          </div>
+
+          <!-- Source Tabs -->
+          <div class="source-tabs" id="source-tabs">
+            <button class="source-tab active" data-tab="directory" data-i18n="source_tab_directory">Local Directory</button>
+            <button class="source-tab" data-tab="crawler" data-i18n="source_tab_crawler">Live Crawl</button>
+            <button class="source-tab" data-tab="manual" data-i18n="source_tab_manual">Paste URLs</button>
+          </div>
+
+          <!-- Tab Content 1: Directory Upload -->
+          <div class="tab-content active" id="content-directory">
+            <div class="drop-zone" id="drop-zone">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>
+              <p class="drop-text" data-i18n="drop_text_folder">Drag & drop your website project folder here</p>
+              <span class="or-text" data-i18n="or">or</span>
+              <label for="dir-upload-input" class="btn btn-primary" data-i18n="btn_choose_folder">Choose Folder</label>
+              <input type="file" id="dir-upload-input" webkitdirectory directory multiple style="display: none;">
+              <p class="privacy-note" data-i18n="privacy_note">100% private. Files never leave your browser.</p>
+            </div>
+          </div>
+
+          <!-- Tab Content 2: Live Crawler -->
+          <div class="tab-content" id="content-crawler">
+            <div class="crawler-box">
+              <p class="crawler-desc" data-i18n="crawler_desc">Input your live website URL. We will recursively scan links using a CORS proxy.</p>
+              <div class="input-group">
+                <input type="url" id="crawl-url-input" placeholder="https://my-ai-site.netlify.app" autocomplete="off">
+                <button class="btn btn-primary" id="btn-start-crawl" data-i18n="btn_crawl">Start Crawl</button>
+              </div>
+              
+              <!-- Crawler progress log -->
+              <div class="crawler-progress" id="crawler-progress-box" style="display: none;">
+                <div class="crawler-status-row">
+                  <span class="crawler-status-badge" id="crawler-status-text">Crawling...</span>
+                  <button class="btn btn-glass btn-sm" id="btn-stop-crawl" data-i18n="btn_stop">Stop</button>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="crawler-progress-bar"></div>
+                </div>
+                <div class="crawler-stats-row">
+                  <span>Pages: <strong id="crawl-stat-pages">0</strong></span>
+                  <span>Queue: <strong id="crawl-stat-queue">0</strong></span>
+                  <span>Errors: <strong id="crawl-stat-errors" style="color:var(--color-danger)">0</strong></span>
+                </div>
+                <div class="crawler-log" id="crawler-log"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content 3: Manual Paste -->
+          <div class="tab-content" id="content-manual">
+            <div class="manual-box">
+              <p class="manual-desc" data-i18n="manual_desc">Paste a list of URLs (one per line) to generate a sitemap directly.</p>
+              <textarea id="manual-urls-input" placeholder="/&#10;/about&#10;/services/web-design&#10;/contact" rows="6"></textarea>
+              <button class="btn btn-primary w-full" id="btn-add-manual" data-i18n="btn_add_urls">Add URLs</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PANEL 2: SEO AUDIT & METRICS (Span 4 cols) -->
+      <section class="bento-card seo-panel" id="card-seo">
+        <div class="bento-card__spotlight"></div>
+        <div class="bento-card__content">
+          <div class="card-header">
+            <h2 data-i18n="seo_header">SEO Health Audit</h2>
+          </div>
+
+          <!-- Circular Score Display -->
+          <div class="score-display-container">
+            <svg class="score-ring" width="130" height="130">
+              <circle class="score-ring__bg" cx="65" cy="65" r="56" stroke-width="6"></circle>
+              <circle class="score-ring__bar" id="score-bar" cx="65" cy="65" r="56" stroke-width="8" stroke-dasharray="351.8" stroke-dashoffset="351.8"></circle>
+            </svg>
+            <div class="score-text">
+              <span class="number" id="seo-score-value">--</span>
+              <span class="label" data-i18n="seo_score_label">Health</span>
+            </div>
+          </div>
+
+          <!-- Audit Metrics list -->
+          <div class="audit-metrics">
+            <div class="metric-item">
+              <span class="metric-val" id="stat-total-pages">0</span>
+              <span class="metric-label" data-i18n="metric_pages">Pages Detected</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val" id="stat-total-images">0</span>
+              <span class="metric-label" data-i18n="metric_images">Images Mapped</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val" id="stat-broken-links">0</span>
+              <span class="metric-label" data-i18n="metric_broken">Broken Links</span>
+            </div>
+          </div>
+
+          <!-- Quick Issues Checklist -->
+          <div class="audit-checklist-container">
+            <h3 data-i18n="audit_checklist_title">SEO Improvements Checklist</h3>
+            <ul class="audit-checklist" id="audit-checklist-items">
+              <li class="checklist-empty" data-i18n="checklist_empty">Import a website to audit SEO metadata.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PANEL 3: PAGES MAP & EDITOR (Span 8 cols) -->
+      <section class="bento-card editor-panel" id="card-editor">
+        <div class="bento-card__spotlight"></div>
+        <div class="bento-card__content">
+          <div class="card-header">
+            <h2 data-i18n="editor_header">2. Review Page Nodes</h2>
+            <button class="btn btn-glass btn-sm" id="btn-add-page-modal" data-i18n="btn_add_page">+ Add Page</button>
+          </div>
+
+          <div class="table-container">
+            <table class="pages-table" id="pages-table">
+              <thead>
+                <tr>
+                  <th data-i18n="th_route">Route Path</th>
+                  <th data-i18n="th_title">Meta Title</th>
+                  <th data-i18n="th_images">Images</th>
+                  <th data-i18n="th_priority">Priority</th>
+                  <th data-i18n="th_freq">Frequency</th>
+                  <th data-i18n="th_status">SEO Status</th>
+                  <th data-i18n="th_actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="pages-table-body">
+                <tr>
+                  <td colspan="7" class="table-empty" data-i18n="table_empty_state">No pages analyzed yet. Drag a folder or crawl a URL to begin.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="table-actions">
+            <button class="text-btn" id="btn-clear-pages" data-i18n="btn_clear_all">Clear All Pages</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PANEL 4: SITEMAP CONFIGURATION (Span 4 cols) -->
+      <section class="bento-card config-panel" id="card-config">
+        <div class="bento-card__spotlight"></div>
+        <div class="bento-card__content">
+          <div class="card-header">
+            <h2 data-i18n="config_header">3. Configuration</h2>
+          </div>
+
+          <div class="config-fields">
+            
+            <!-- Base URL -->
+            <div class="config-group">
+              <label for="config-base-url" data-i18n="cfg_base_url">Website Base URL</label>
+              <input type="url" id="config-base-url" placeholder="https://www.mywebsite.com" value="https://example.com">
+            </div>
+
+            <!-- Include Image Sitemap tags -->
+            <div class="config-row">
+              <div class="config-row-label">
+                <span class="title" data-i18n="cfg_image_sitemap">Include Image Tags</span>
+                <span class="desc" data-i18n="cfg_image_sitemap_desc">Generate &lt;image:image&gt; for Google Image SEO.</span>
+              </div>
+              <label class="premium-switch">
+                <input type="checkbox" id="cfg-include-images" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <!-- Auto lastmod date -->
+            <div class="config-row">
+              <div class="config-row-label">
+                <span class="title" data-i18n="cfg_lastmod">Include Lastmod Date</span>
+                <span class="desc" data-i18n="cfg_lastmod_desc">Add last modification tags using generation date.</span>
+              </div>
+              <label class="premium-switch">
+                <input type="checkbox" id="cfg-include-lastmod" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <!-- Default ChangeFreq -->
+            <div class="config-group">
+              <label for="config-default-freq" data-i18n="cfg_default_freq">Default Change Frequency</label>
+              <div class="select-wrapper">
+                <select id="config-default-freq">
+                  <option value="weekly" selected>Weekly</option>
+                  <option value="daily">Daily</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="hourly">Hourly</option>
+                  <option value="yearly">Yearly</option>
+                  <option value="always">Always</option>
+                  <option value="never">Never</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Default Priority -->
+            <div class="config-group">
+              <label for="config-default-priority" data-i18n="cfg_default_priority">Default Priority</label>
+              <div class="select-wrapper">
+                <select id="config-default-priority">
+                  <option value="0.8">0.8 (Highly Important)</option>
+                  <option value="0.5" selected>0.5 (Standard)</option>
+                  <option value="1.0">1.0 (Homepage)</option>
+                  <option value="0.3">0.3 (Secondary)</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 5: CODE CONSOLE (Span 8 cols) -->
+      <section class="bento-card console-panel" id="card-console">
+        <div class="bento-card__spotlight"></div>
+        <div class="bento-card__content">
+          <div class="card-header">
+            <h2 data-i18n="console_header">4. Generated Files</h2>
+            
+            <!-- File format switcher tabs -->
+            <div class="format-tabs" id="format-tabs">
+              <button class="format-tab active" data-format="xml">sitemap.xml</button>
+              <button class="format-tab" data-format="txt">sitemap.txt</button>
+              <button class="format-tab" data-format="json">sitemap.json</button>
+              <button class="format-tab" data-format="robots">robots.txt</button>
+            </div>
+          </div>
+
+          <!-- Code View Area -->
+          <div class="code-view-container">
+            <pre class="code-output"><code id="code-output-element">&lt;!-- Sitemaps XML will load here --&gt;</code></pre>
+          </div>
+
+          <div class="console-actions">
+            <button class="btn btn-glass" id="btn-copy-code" data-i18n="btn_copy">Copy Code</button>
+            <button class="btn btn-primary" id="btn-download-file">
+              <span id="download-btn-text" data-i18n="btn_download_sitemap">Download Sitemap</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <span data-i18n="footer_text">© 2026 Maravillium. Built with obsession.</span>
+    </footer>
+
+  </div>
+
+  <!-- ADD PAGE DIALOG (Hidden Modal) -->
+  <div class="modal" id="add-page-modal">
+    <div class="modal__overlay" id="modal-overlay"></div>
+    <div class="modal__container">
+      <button class="modal__close" id="modal-close-btn">&#10005;</button>
+      <div class="modal__header">
+        <h2 class="modal__title" data-i18n="modal_add_title">Add Page Node</h2>
+        <p class="modal__subtitle" data-i18n="modal_add_subtitle">Manually add a page path to generate in the sitemap output.</p>
+      </div>
+
+      <form id="add-page-form" class="modal-form">
+        <div class="form-group">
+          <label for="form-path" data-i18n="form_label_path">Relative Route Path</label>
+          <input type="text" id="form-path" placeholder="/blog/my-first-post" required autocomplete="off">
+        </div>
+        
+        <div class="form-group">
+          <label for="form-title" data-i18n="form_label_title">Page Meta Title (Optional)</label>
+          <input type="text" id="form-title" placeholder="My Blog Post Title" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-priority" data-i18n="form_label_priority">Priority</label>
+            <div class="select-wrapper">
+              <select id="form-priority">
+                <option value="1.0">1.0 (Highest)</option>
+                <option value="0.8">0.8 (High)</option>
+                <option value="0.5" selected>0.5 (Standard)</option>
+                <option value="0.3">0.3 (Low)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="form-freq" data-i18n="form_label_freq">Change Frequency</label>
+            <div class="select-wrapper">
+              <select id="form-freq">
+                <option value="always">Always</option>
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="weekly" selected>Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly</option>
+                <option value="never">Never</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full" data-i18n="btn_save_node">Save Page Node</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

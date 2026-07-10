@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/db.html
+
+User-agent: *
+Allow: /
+
+# Sitemap Link
+Sitemap: https://maravillium.com/sitemap.xml

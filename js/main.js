@@ -43,6 +43,8 @@
       tool_pomodoro_desc: 'A premium Bento-style pomodoro timer with integrated tasks and ambient sounds to boost focus.',
       tool_generator_title: 'Brand Image Generator',
       tool_generator_desc: 'Generate high-quality social media posts and branding assets matching your visual identity using AI.',
+      tool_sitemap_title: 'AI Sitemap Creator',
+      tool_sitemap_desc: 'Generate XML sitemaps, robots.txt, and run an SEO audit on your AI-generated static websites instantly.',
       about_label: 'About',
       about_title: 'Who is Maravillium?',
       about_p1: '<strong>Honestly?</strong> We are a small team of developers who get bored easily and build things to scratch that itch.',
@@ -100,6 +102,8 @@
       tool_pomodoro_desc: 'Un temporizador pomodoro premium estilo bento con tareas integradas y sonidos ambientales.',
       tool_generator_title: 'Generador de Imagen de Marca',
       tool_generator_desc: 'Crea recursos cohesivos para redes sociales y gráficos de marketing que coincidan con tu identidad de marca al instante con IA.',
+      tool_sitemap_title: 'Creador de Sitemap IA',
+      tool_sitemap_desc: 'Generá sitemaps XML, robots.txt y realizá una auditoría SEO en tus sitios estáticos creados con IA de forma instantánea.',
       about_label: 'Nosotros',
       about_title: '¿Quién es Maravillium?',
       about_p1: '<strong>¿La verdad?</strong> Somos un equipo pequeño de desarrolladores que se aburren fácil y construyen cosas para matar el aburrimiento.',
@@ -304,6 +308,8 @@
         window.location.href = 'pomodoroTimerApp/';
       } else if (tool === 'generator') {
         window.open('https://generator.maravillium.com', '_blank');
+      } else if (tool === 'sitemap-creator') {
+        window.location.href = 'sitemapCreatorApp/';
       }
     });
   });

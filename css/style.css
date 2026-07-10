@@ -1320,7 +1320,7 @@ ul, ol {
 
 .tools__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   gap: 32px;
 }
@@ -2049,6 +2049,10 @@ ul, ol {
   }
 
   .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tools__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
