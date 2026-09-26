@@ -11,6 +11,7 @@ New-Item -ItemType Directory -Force -Path "$distDir\css" | Out-Null
 Copy-Item -Path ".\src\styles.css" -Destination "$distDir\css\styles.css"
 
 $waLink = "https://wa.me/5491122334455?text=Hola,%20estoy%20listo%20para%20aumentar%20mis%20ventas"
+$domain = "https://maravillium.netlify.app"
 
 function Save-Utf8 {
     param ([string]$path, [string]$content)
@@ -23,8 +24,13 @@ function Render-Layout {
         [string]$title,
         [string]$content,
         [string]$metaDesc,
-        [string]$basePath = "./"
+        [string]$basePath = "./",
+        [string]$urlPath = ""
     )
+    
+    $canonical = "$domain/$urlPath"
+    if ($urlPath -eq "" -or $urlPath -eq "index.html") { $canonical = "$domain/" }
+
     return @"
 <!DOCTYPE html>
 <html lang="es">
@@ -33,6 +39,15 @@ function Render-Layout {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>$title | Maravillium</title>
   <meta name="description" content="$metaDesc">
+  
+  <link rel="canonical" href="$canonical" />
+  
+  <meta property="og:title" content="$title | Maravillium" />
+  <meta property="og:description" content="$metaDesc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="$canonical" />
+  <meta property="og:site_name" content="Maravillium" />
+  
   <link rel="stylesheet" href="${basePath}css/styles.css">
 </head>
 <body>
@@ -208,7 +223,7 @@ $pages = @(
 )
 
 foreach ($p in $pages) {
-    $html = Render-Layout -title $p.title -content $p.content -metaDesc $p.metaDesc -basePath "./"
+    $html = Render-Layout -title $p.title -content $p.content -metaDesc $p.metaDesc -basePath "./" -urlPath $p.path
     Save-Utf8 -path "$distDir\$($p.path)" -content $html
 }
 
@@ -264,7 +279,7 @@ foreach ($post in $blogPosts) {
           </div>
         </div>
 "@
-    $html = Render-Layout -title $title -content $content -metaDesc $metaDesc -basePath "../"
+    $html = Render-Layout -title $title -content $content -metaDesc $metaDesc -basePath "../" -urlPath "blog/$slug.html"
     Save-Utf8 -path "$blogDir\$slug.html" -content $html
 
     $groupedByNiche[$post.n] += @{ title = $title; slug = $slug; metaDesc = $metaDesc }
@@ -313,7 +328,7 @@ foreach ($n in $niches) {
     </div>
   </section>
 "@
-    $nicheHtml = Render-Layout -title "Estrategias $capitalizedNiche" -content $nicheIndexContent -metaDesc "Estrategias para $n." -basePath "../"
+    $nicheHtml = Render-Layout -title "Estrategias $capitalizedNiche" -content $nicheIndexContent -metaDesc "Estrategias para $n." -basePath "../" -urlPath "blog/niche-$nicheSlug.html"
     Save-Utf8 -path "$blogDir\niche-$nicheSlug.html" -content $nicheHtml
 }
 
@@ -322,7 +337,26 @@ $blogIndexContent += @"
   </section>
 "@
 
-$mainIndexHtml = Render-Layout -title 'Directorio de Estrategias' -content $blogIndexContent -metaDesc 'Descubre estrategias para tu nicho.' -basePath "../"
+$mainIndexHtml = Render-Layout -title 'Directorio de Estrategias' -content $blogIndexContent -metaDesc 'Descubre estrategias para tu nicho.' -basePath "../" -urlPath "blog/index.html"
 Save-Utf8 -path "$blogDir\index.html" -content $mainIndexHtml
 
-Write-Output "Site generated with fixed copy and 1000 pages."
+Write-Output "Generating Sitemap and Robots.txt..."
+$sitemapContent = "<?xml version=`"1.0`" encoding=`"UTF-8`"?>`n<urlset xmlns=`"http://www.sitemaps.org/schemas/sitemap/0.9`">`n"
+$urls = @("", "nosotros.html", "servicios.html", "blog/index.html")
+foreach ($n in $niches) {
+    $nicheSlug = $n.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
+    $urls += "blog/niche-$nicheSlug.html"
+}
+foreach ($post in $blogPosts) {
+    $urls += "blog/$($post.slug).html"
+}
+foreach ($u in $urls) {
+    $sitemapContent += "  <url>`n    <loc>$domain/$u</loc>`n    <changefreq>weekly</changefreq>`n  </url>`n"
+}
+$sitemapContent += "</urlset>"
+Save-Utf8 -path "$distDir\sitemap.xml" -content $sitemapContent
+
+$robotsContent = "User-agent: *`nAllow: /`n`nSitemap: $domain/sitemap.xml"
+Save-Utf8 -path "$distDir\robots.txt" -content $robotsContent
+
+Write-Output "Site generated with SEO optimizations (OpenGraph + Canonical + Sitemap)!"
