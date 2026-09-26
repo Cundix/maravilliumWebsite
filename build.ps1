@@ -175,48 +175,45 @@ foreach ($p in $pages) {
     Set-Content -Path "$distDir\$($p.path)" -Value $html -Encoding UTF8
 }
 
-# Generate 100 Long Tail Keywords
+# Generate 500 Long Tail Keywords
 $prefixes = @(
-    "Cómo conseguir más clientes con", 
-    "Estrategias comprobadas de", 
-    "Por qué no funciona tu", 
-    "Guía paso a paso de", 
-    "Cuánto cuesta realmente hacer"
+    "Cómo conseguir más clientes con", "Estrategias comprobadas de", "Por qué no funciona tu", 
+    "Guía paso a paso de", "Cuánto cuesta realmente hacer", "El secreto mejor guardado de",
+    "Cómo evitar perder dinero en", "La forma más rápida de escalar con"
 )
 $services = @(
-    "publicidad en Instagram y Facebook", 
-    "marketing digital orientado a ventas", 
-    "un rediseño de página web web", 
-    "posicionamiento SEO local en Google", 
-    "gestión profesional de redes sociales"
+    "publicidad en Instagram y Facebook", "marketing digital orientado a ventas", 
+    "un rediseño de página web", "posicionamiento SEO local en Google", 
+    "gestión profesional de redes sociales", "publicidad B2B en LinkedIn",
+    "creación de embudos de venta", "email marketing automatizado"
 )
 $niches = @(
-    "para clínicas dentales", 
-    "para despachos de abogados", 
-    "para empresas de construcción", 
-    "para tiendas de e-commerce", 
-    "para negocios locales B2B"
+    "para clínicas dentales", "para despachos de abogados", "para empresas de construcción", 
+    "para tiendas de e-commerce", "para negocios locales B2B", "para psicólogos",
+    "para empresas de logística", "para academias online", "para concesionarios de coches",
+    "para gimnasios y centros fitness"
 )
 $benefits = @(
-    "sin gastar una fortuna", 
-    "para multiplicar tus ingresos este año", 
-    "y superar a tu competencia", 
-    "explicado desde cero y de forma sencilla"
+    "sin gastar una fortuna", "para multiplicar tus ingresos este año", 
+    "y superar a tu competencia", "explicado desde cero y de forma sencilla",
+    "con resultados visibles en 30 días", "sin necesidad de contratar más empleados",
+    "para dominar tu mercado local", "generando prospectos calificados a diario"
 )
 
-$blogPosts = @()
-$count = 1
+$allCombinations = @()
 
 foreach ($p in $prefixes) {
     foreach ($s in $services) {
         foreach ($n in $niches) {
             foreach ($b in $benefits) {
-                if ($count -gt 100) { break }
                 $title = "$p $s $n $b"
                 $slug = $title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
-                
-                $metaDesc = "Descubre $p $s $n. Lee nuestra guía detallada enfocada en mejorar tus ventas sin tecnicismos."
-                $content = @"
+                $allCombinations += @{
+                    niche = $n
+                    slug = $slug
+                    title = $title
+                    metaDesc = "Descubre $p $s $n. Lee nuestra guía detallada enfocada en mejorar tus ventas sin tecnicismos."
+                    content = @"
         <div class="blog-post">
           <h1>$title</h1>
           <p>Si alguna vez te has preguntado <strong>$p $s $n</strong>, estás en el lugar correcto. En Maravillium, sabemos que tu objetivo final no es tener 'likes', sino ventas reales y medibles.</p>
@@ -230,25 +227,29 @@ foreach ($p in $prefixes) {
           <h2>¿Por qué elegir Maravillium?</h2>
           <p>No usamos palabras raras ni métricas vanidosas. Hablamos de Retorno de Inversión (ROI) y crecimiento. Si buscas implementar estas estrategias de forma eficiente y <strong>$b</strong>, somos tu mejor opción.</p>
 
-          <p><strong>¿Listo para dar el siguiente paso?</strong> No pierdas más tiempo experimentando por tu cuenta. <a href="/contacto.html" style="color:var(--pink); font-weight:bold;">Contáctanos hoy mismo</a> y veamos cómo podemos escalar tus ventas.</p>
+          <div class="cta-box">
+            <h3>¿Listo para aumentar tus ventas de verdad?</h3>
+            <p>Deja de experimentar con tu presupuesto. Déjanos diseñar la estrategia perfecta para tu negocio $n.</p>
+            <a href="/contacto.html" class="btn-primary">Hablemos hoy mismo</a>
+          </div>
         </div>
 "@
-                $blogPosts += @{
-                    slug = $slug
-                    title = $title
-                    metaDesc = $metaDesc
-                    content = $content
                 }
-                $count++
             }
         }
     }
 }
 
+# Shuffle array and take 500
+$blogPosts = $allCombinations | Sort-Object {Get-Random} | Select-Object -First 500
+
 foreach ($post in $blogPosts) {
     $html = Render-Layout -title $post.title -content $post.content -metaDesc $post.metaDesc
     Set-Content -Path "$blogDir\$($post.slug).html" -Value $html -Encoding UTF8
 }
+
+# Group for Index
+$groupedPosts = $blogPosts | Group-Object -Property niche | Sort-Object Name
 
 $blogIndexContent = @"
   <section class="hero" style="padding: 4rem 2rem 2rem;">
@@ -258,14 +259,22 @@ $blogIndexContent = @"
   <section class="section" style="padding-top:0;">
     <div class="blog-list">
 "@
-foreach ($p in $blogPosts) {
+
+foreach ($group in $groupedPosts) {
+    $nicheTitle = $group.Name
     $blogIndexContent += @"
+      <h2 style="margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--text-dark); padding-bottom: 0.5rem;">Estrategias $nicheTitle</h2>
+"@
+    foreach ($p in $group.Group) {
+        $blogIndexContent += @"
         <div class="blog-item">
           <h3><a href="/blog/$($p.slug).html">$($p.title)</a></h3>
           <p>$($p.metaDesc)</p>
         </div>
 "@
+    }
 }
+
 $blogIndexContent += @"
     </div>
   </section>

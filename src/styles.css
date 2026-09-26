@@ -265,6 +265,37 @@ footer h2 {
   margin-bottom: 1rem;
 }
 
+/* Call to Action Box */
+.cta-box {
+  background: var(--pink);
+  border: 2px solid var(--text-dark);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: 4px 4px 0px var(--text-dark);
+}
+
+.cta-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.cta-box p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.cta-box .btn-primary {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: 1rem 3rem;
+}
+.cta-box .btn-primary:hover {
+  background-color: var(--light-green);
+  color: var(--text-dark);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero h1 { font-size: 3.5rem; }
