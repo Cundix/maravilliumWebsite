@@ -64,7 +64,7 @@ a {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1rem 4rem;
+  padding: 0.5rem 4rem;
   background: var(--cream);
   border-bottom: var(--brutal-border);
   position: sticky;
@@ -73,10 +73,10 @@ a {
 }
 
 .nav-brand {
-  font-family: 'Fraunces', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -2px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-toggle {
@@ -423,13 +423,13 @@ footer {
   
   .navbar { 
     position: sticky; /* Restoring sticky 1-line behavior on mobile */
-    padding: 1rem; 
+    padding: 0.5rem 1rem; 
     flex-wrap: nowrap; 
     justify-content: space-between;
   }
   .nav-brand { 
-    font-size: 1.8rem; 
-    margin-bottom: 0; 
+    margin: 0; 
+    padding: 0;
   }
   .menu-toggle {
     display: block;
