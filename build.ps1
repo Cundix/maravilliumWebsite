@@ -7,8 +7,12 @@ if (Test-Path $distDir) {
 New-Item -ItemType Directory -Force -Path $distDir | Out-Null
 New-Item -ItemType Directory -Force -Path $blogDir | Out-Null
 New-Item -ItemType Directory -Force -Path "$distDir\css" | Out-Null
+New-Item -ItemType Directory -Force -Path "$distDir\img" | Out-Null
 
 Copy-Item -Path ".\src\styles.css" -Destination "$distDir\css\styles.css"
+if (Test-Path ".\src\img") {
+    Copy-Item -Path ".\src\img\*" -Destination "$distDir\img" -Recurse -Force
+}
 
 $waLink = "https://wa.me/5491122334455?text=Hola,%20estoy%20listo%20para%20aumentar%20mis%20ventas"
 $domain = "https://maravillium.netlify.app"
@@ -52,7 +56,7 @@ function Render-Layout {
 </head>
 <body>
   <nav class="navbar">
-    <a href="${basePath}index.html" class="nav-brand">maravillium.</a>
+    <a href="${basePath}index.html" class="nav-brand"><img src="${basePath}img/logo.png" alt="Maravillium Logo" style="height: 45px; display: block;"></a>
     <div class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</div>
     <div class="nav-links" id="navLinks">
       <a href="${basePath}nosotros.html" class="nav-item">Nosotros</a>
