@@ -41,7 +41,6 @@ function Render-Layout {
     <div class="nav-links">
       <a href="${basePath}nosotros.html">Nosotros</a>
       <a href="${basePath}servicios.html">Servicios</a>
-      <a href="${basePath}blog/index.html">Estrategias</a>
     </div>
     <a href="$waLink" class="nav-cta" target="_blank">&#128242; Hablar con Ventas</a>
   </nav>
