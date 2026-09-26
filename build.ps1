@@ -72,9 +72,20 @@ function Render-Layout {
     <a href="$waLink" class="btn-primary btn-large" target="_blank">AGENDA UNA LLAMADA HOY</a>
   </footer>
 
-  <a href="$waLink" class="floating-wa" target="_blank">
+  <a href="$waLink" class="floating-wa" id="floatingWa" target="_blank">
     &#128172; Chatea con Nosotros
   </a>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      var waBtn = document.getElementById('floatingWa');
+      if (window.scrollY > window.innerHeight * 0.7) {
+        waBtn.classList.add('show');
+      } else {
+        waBtn.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>
 "@

@@ -386,10 +386,21 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  
+  /* Hidden initially */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
 }
 
-.floating-wa:hover {
+.floating-wa.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-wa.show:hover {
   transform: translate(-3px, -3px);
   box-shadow: 9px 9px 0px var(--text-dark);
 }
