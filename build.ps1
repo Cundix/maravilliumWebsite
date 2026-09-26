@@ -56,7 +56,7 @@ function Render-Layout {
 </head>
 <body>
   <nav class="navbar">
-    <a href="${basePath}index.html" class="nav-brand"><img src="${basePath}img/logo.png" alt="Maravillium Logo" style="height: 55px; display: block;"></a>
+    <a href="${basePath}index.html" class="nav-brand"><img src="${basePath}img/logo.png" alt="Maravillium Logo" style="height: 70px; display: block;"></a>
     <div class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</div>
     <div class="nav-links" id="navLinks">
       <a href="${basePath}nosotros.html" class="nav-item">Nosotros</a>
