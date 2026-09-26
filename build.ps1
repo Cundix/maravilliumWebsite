@@ -175,54 +175,73 @@ foreach ($p in $pages) {
     Set-Content -Path "$distDir\$($p.path)" -Value $html -Encoding UTF8
 }
 
-$topics = @(
-    "Como aumentar tus ventas", "Estrategias de marketing para", "Por que necesitas una pagina web para",
-    "Secretos de redes sociales para", "Errores comunes en publicidad de", "Guia de SEO local para",
-    "El impacto del diseno web en", "Como conseguir mas clientes en"
+# Generate 100 Long Tail Keywords
+$prefixes = @(
+    "Cómo conseguir más clientes con", 
+    "Estrategias comprobadas de", 
+    "Por qué no funciona tu", 
+    "Guía paso a paso de", 
+    "Cuánto cuesta realmente hacer"
+)
+$services = @(
+    "publicidad en Instagram y Facebook", 
+    "marketing digital orientado a ventas", 
+    "un rediseño de página web web", 
+    "posicionamiento SEO local en Google", 
+    "gestión profesional de redes sociales"
 )
 $niches = @(
-    "restaurantes", "clinicas dentales", "abogados", "tiendas online", "gimnasios",
-    "inmobiliarias", "agencias de viajes", "salones de belleza", "talleres mecanicos", "hoteles",
-    "colegios", "empresas de limpieza", "arquitectos"
+    "para clínicas dentales", 
+    "para despachos de abogados", 
+    "para empresas de construcción", 
+    "para tiendas de e-commerce", 
+    "para negocios locales B2B"
+)
+$benefits = @(
+    "sin gastar una fortuna", 
+    "para multiplicar tus ingresos este año", 
+    "y superar a tu competencia", 
+    "explicado desde cero y de forma sencilla"
 )
 
 $blogPosts = @()
 $count = 1
 
-foreach ($t in $topics) {
-    foreach ($n in $niches) {
-        if ($count -gt 100) { break }
-        $title = "$t $n"
-        $slug = $title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
-        
-        $metaDesc = "Descubre $($title.ToLower()) y como mejorar los resultados de tu negocio con Maravillium."
-        $content = @"
+foreach ($p in $prefixes) {
+    foreach ($s in $services) {
+        foreach ($n in $niches) {
+            foreach ($b in $benefits) {
+                if ($count -gt 100) { break }
+                $title = "$p $s $n $b"
+                $slug = $title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
+                
+                $metaDesc = "Descubre $p $s $n. Lee nuestra guía detallada enfocada en mejorar tus ventas sin tecnicismos."
+                $content = @"
         <div class="blog-post">
           <h1>$title</h1>
-          <p>Si eres dueño de un negocio en el sector de $n, sabes lo importante que es mantener un flujo constante de nuevos clientes. En Maravillium, como agencia de marketing experta, queremos compartir contigo las mejores tácticas sobre $($title.ToLower()).</p>
+          <p>Si alguna vez te has preguntado <strong>$p $s $n</strong>, estás en el lugar correcto. En Maravillium, sabemos que tu objetivo final no es tener 'likes', sino ventas reales y medibles.</p>
           
-          <h2>1. Conoce a tu cliente ideal</h2>
-          <p>Antes de lanzar cualquier campaña de publicidad o diseñar tu página web, necesitas saber a quién le hablas. El principal error que cometen muchos negocios es intentar venderle a todo el mundo.</p>
+          <h2>El problema de la mayoría de las estrategias</h2>
+          <p>Muchos negocios invierten tiempo y dinero en tácticas que no están diseñadas para su industria específica. Cuando hablamos de soluciones $n, el enfoque debe estar 100% en entender los dolores del cliente final.</p>
 
-          <h2>2. Tu página web es tu mejor vendedor</h2>
-          <p>Tener un sitio web no es un lujo, es una necesidad. Una página rápida, fácil de usar y diseñada para captar datos puede aumentar tus ventas drásticamente, trabajando para ti las 24 horas del día.</p>
+          <h2>Nuestra metodología probada</h2>
+          <p>Aplicar $s requiere de experiencia y optimización constante. Nuestro equipo se encarga de estructurar campañas, diseñar páginas de aterrizaje y crear embudos de venta que funcionan, especialmente con el objetivo de lograr resultados $b.</p>
           
-          <h2>3. Usa las redes sociales estratégicamente</h2>
-          <p>No se trata de publicar todos los días, sino de publicar contenido que resuelva los problemas de tu audiencia y los invite a contactarte.</p>
+          <h2>¿Por qué elegir Maravillium?</h2>
+          <p>No usamos palabras raras ni métricas vanidosas. Hablamos de Retorno de Inversión (ROI) y crecimiento. Si buscas implementar estas estrategias de forma eficiente y <strong>$b</strong>, somos tu mejor opción.</p>
 
-          <h2>4. Invierte en publicidad inteligente</h2>
-          <p>Plataformas como Google Ads y Facebook Ads te permiten llegar exactamente a las personas que buscan tus servicios en tu ciudad.</p>
-
-          <p><strong>¿Quieres implementar esto sin dolores de cabeza?</strong> En Maravillium nos encargamos de todo esto por ti. <a href="/contacto.html" style="color:var(--pink); font-weight:bold;">Contáctanos hoy mismo</a> y veamos cómo podemos escalar tus ventas.</p>
+          <p><strong>¿Listo para dar el siguiente paso?</strong> No pierdas más tiempo experimentando por tu cuenta. <a href="/contacto.html" style="color:var(--pink); font-weight:bold;">Contáctanos hoy mismo</a> y veamos cómo podemos escalar tus ventas.</p>
         </div>
 "@
-        $blogPosts += @{
-            slug = $slug
-            title = $title
-            metaDesc = $metaDesc
-            content = $content
+                $blogPosts += @{
+                    slug = $slug
+                    title = $title
+                    metaDesc = $metaDesc
+                    content = $content
+                }
+                $count++
+            }
         }
-        $count++
     }
 }
 
@@ -234,7 +253,7 @@ foreach ($post in $blogPosts) {
 $blogIndexContent = @"
   <section class="hero" style="padding: 4rem 2rem 2rem;">
     <h1>Nuestro <span>Blog</span></h1>
-    <p class="hero-subtitle">Consejos, estrategias y guías para hacer crecer tu negocio y aumentar tus ventas.</p>
+    <p class="hero-subtitle">Guías detalladas para aprender a captar más clientes en tu industria.</p>
   </section>
   <section class="section" style="padding-top:0;">
     <div class="blog-list">
@@ -252,7 +271,7 @@ $blogIndexContent += @"
   </section>
 "@
 
-$blogIndexHtml = Render-Layout -title 'Blog de Marketing y Ventas' -content $blogIndexContent -metaDesc 'Lee nuestro blog con 100 artículos sobre cómo hacer crecer tu negocio y conseguir más clientes.'
+$blogIndexHtml = Render-Layout -title 'Blog de Marketing y Ventas' -content $blogIndexContent -metaDesc 'Artículos en profundidad sobre cómo aumentar las ventas en distintas industrias usando diseño web y publicidad.'
 Set-Content -Path "$blogDir\index.html" -Value $blogIndexHtml -Encoding UTF8
 
-Write-Output "Site generated successfully in /dist with $($blogPosts.Count) blog posts."
+Write-Output "Site generated successfully in /dist with $($blogPosts.Count) long-tail SEO blog posts."
