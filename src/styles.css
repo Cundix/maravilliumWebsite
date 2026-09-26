@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&family=Inter:wght@400;500;700;900&display=swap');
 
 :root {
   --coral: #ff6b57;
@@ -32,9 +32,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Outfit', sans-serif;
   color: var(--text-dark);
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: -0.02em;
 }
 
