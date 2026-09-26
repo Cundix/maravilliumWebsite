@@ -38,11 +38,12 @@ function Render-Layout {
 <body>
   <nav class="navbar">
     <a href="${basePath}index.html" class="nav-brand">maravillium.</a>
-    <div class="nav-links">
-      <a href="${basePath}nosotros.html">Nosotros</a>
-      <a href="${basePath}servicios.html">Servicios</a>
+    <div class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</div>
+    <div class="nav-links" id="navLinks">
+      <a href="${basePath}nosotros.html" class="nav-item">Nosotros</a>
+      <a href="${basePath}servicios.html" class="nav-item">Servicios</a>
+      <a href="$waLink" class="nav-cta" target="_blank">&#128242; Hablar con Ventas</a>
     </div>
-    <a href="$waLink" class="nav-cta" target="_blank">&#128242; Hablar con Ventas</a>
   </nav>
 
   $content

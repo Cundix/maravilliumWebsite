@@ -64,13 +64,12 @@ a {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1.5rem 4rem;
+  padding: 1rem 4rem;
   background: var(--cream);
   border-bottom: var(--brutal-border);
   position: sticky;
   top: 0;
   z-index: 1000;
-  gap: 1.5rem;
 }
 
 .nav-brand {
@@ -80,14 +79,22 @@ a {
   letter-spacing: -2px;
 }
 
+.menu-toggle {
+  display: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.nav-links a {
+.nav-links a.nav-item {
   font-weight: 900;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -95,7 +102,7 @@ a {
   transition: transform 0.2s;
 }
 
-.nav-links a:hover {
+.nav-links a.nav-item:hover {
   transform: translateY(-2px);
 }
 
@@ -112,6 +119,8 @@ a {
   cursor: pointer;
   box-shadow: 4px 4px 0px var(--text-dark);
   white-space: nowrap;
+  display: inline-block;
+  text-align: center;
 }
 
 .nav-cta:hover {
@@ -401,28 +410,38 @@ footer {
   .section-title { font-size: 2rem; }
   
   .navbar { 
-    position: static; /* Removed sticky on mobile for better UX */
-    padding: 1rem 0.5rem; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center; 
-    flex-wrap: wrap; 
+    position: sticky; /* Restoring sticky 1-line behavior on mobile */
+    padding: 1rem; 
+    flex-wrap: nowrap; 
+    justify-content: space-between;
   }
   .nav-brand { 
-    font-size: 1.5rem; 
+    font-size: 1.8rem; 
     margin-bottom: 0; 
   }
-  .nav-cta { 
-    padding: 0.5rem 0.8rem; 
-    font-size: 0.75rem; 
-    border-width: 2px;
+  .menu-toggle {
+    display: block;
   }
   .nav-links { 
-    width: 100%; 
-    justify-content: center; 
-    order: 3; 
-    margin-top: 0.5rem; 
-    gap: 1.2rem; 
+    display: none; /* Hidden until toggled via JS */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--cream);
+    border-bottom: var(--brutal-border);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-cta { 
+    width: 100%;
+    padding: 0.8rem 1rem; 
+    font-size: 0.9rem; 
+    border-width: 2px;
   }
   
   .section { padding: 3rem 1rem; }
