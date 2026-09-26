@@ -162,6 +162,7 @@ a {
 
 .btn-primary {
   display: inline-block;
+  padding: 0.8rem 2rem;
   background-color: var(--wa-green);
   color: var(--text-dark);
   border: var(--brutal-border);
@@ -176,6 +177,7 @@ a {
 
 .btn-secondary {
   display: inline-block;
+  padding: 0.8rem 2rem;
   background-color: var(--white);
   color: var(--text-dark);
   border: var(--brutal-border);
