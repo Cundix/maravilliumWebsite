@@ -14,7 +14,7 @@ if (Test-Path ".\src\img") {
     Copy-Item -Path ".\src\img\*" -Destination "$distDir\img" -Recurse -Force
 }
 
-$waLink = "https://wa.me/5491122334455?text=Hola,%20estoy%20listo%20para%20aumentar%20mis%20ventas"
+$waLink = "https://wa.me/5491128684459?text=Hola,%20estoy%20listo%20para%20aumentar%20mis%20ventas"
 $domain = "https://maravillium.netlify.app"
 
 function Save-Utf8 {
